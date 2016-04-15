@@ -1,0 +1,7 @@
+<page navigatingTo="navigatingTo" loaded="loaded">
+<stack-layout>
+<text-field hint="Username" text="{{username}}"/>
+<text-field hint="Channel Name" text="{{channel}}"/>
+<button text="text" tap="login"/>
+</stack-layout>
+</page>
