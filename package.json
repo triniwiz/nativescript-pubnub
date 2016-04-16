@@ -1,6 +1,6 @@
 {
   "name": "nativescript-pubnub",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A NativeScript plugin to use pubnub",
   "main": "pubnub.js",
   "nativescript": {
@@ -24,7 +24,8 @@
     "NativeScript",
     "JavaScript",
     "Android",
-    "iOS"
+    "iOS",
+    "PubNub"
   ],
   "author": {
     "name": "Osei Fortune",

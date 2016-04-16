@@ -3,7 +3,8 @@ import * as pages from 'ui/page';
 const myPub = "demo";
 const mySub = "demo";
 import {HelloWorldModel} from './main-view-model';
-import {PubNub} from 'nativescript-pubnub';
+//import {PubNub} from '../pubnub/pubnub';
+import pubNub = require('nativescript-pubnub')
 // Event handler for Page "loaded" event attached in main-page.xml
 export function pageLoaded(args: observable.EventData) {
   // Get the event sender
@@ -11,24 +12,24 @@ export function pageLoaded(args: observable.EventData) {
   page.bindingContext = new HelloWorldModel();
 }
 
-let pubnub = new PubNub(myPub, mySub);
+let pubnub = new pubNub.PubNub(myPub, mySub);
 pubnub.setUUID("triniwiz")
 pubnub.subscribe("triniwiz_home", function (cb) {
   console.dump(cb)
 })
 
-let cb = (args) => {
+/*let cb = (args) => {
   console.dump(args);
 };
-pubnub.history("triniwiz_home",10,true, cb.bind(this))
+pubnub.history("triniwiz_home",10,true, cb.bind(this))*/
 
-/*pubnub.publish("triniwiz_home", "Testing day 2", function (cb) {
+/*pubnub.publish("triniwiz_home", "Testing day 2.0", function (cb) {
   console.dump(cb.message)
 })
-pubnub.publish("triniwiz_home", "Everythings OK", function (cb) {
+pubnub.publish("triniwiz_home", "Meh", function (cb) {
   console.dump(cb.message)
 })
-pubnub.publish("triniwiz_home", "Hello from earth", function (cb) {
+pubnub.publish("triniwiz_home", "Hello from mars", function (cb) {
   console.dump(cb.message)
 })*/
 /*
