@@ -1,3 +1,13 @@
 import {LoginViewModel} from './login-view-model';
-export function navigatingTo(args) { }
-export function loaded(args) { }
+import {Page, NavigatedData} from 'ui/page';
+let page;
+let loginVM = new LoginViewModel();
+export function navigatingTo(args: NavigatedData) {
+    page = <Page>args.object;
+}
+export function loaded(args: NavigatedData) {
+    page.bindingContext = loginVM;
+}
+export function login() {
+    loginVM.login();
+}

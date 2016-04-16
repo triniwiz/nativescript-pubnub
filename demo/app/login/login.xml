@@ -1,7 +1,7 @@
-<page navigatingTo="navigatingTo" loaded="loaded">
-<stack-layout>
-<text-field hint="Username" text="{{username}}"/>
-<text-field hint="Channel Name" text="{{channel}}"/>
-<button text="text" tap="login"/>
-</stack-layout>
-</page>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" loaded="loaded">
+<StackLayout>
+<TextField hint="Username" text="{{user.username}}"/>
+<TextField hint="Channel Name" text="{{user.channel}}"/>
+<Button text="Login" tap="login"/>
+</StackLayout>
+</Page>

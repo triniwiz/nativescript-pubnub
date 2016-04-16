@@ -6,23 +6,54 @@ import {HelloWorldModel} from './main-view-model';
 import {PubNub} from 'nativescript-pubnub';
 // Event handler for Page "loaded" event attached in main-page.xml
 export function pageLoaded(args: observable.EventData) {
-    // Get the event sender
-    var page = <pages.Page>args.object;
-    page.bindingContext = new HelloWorldModel();
+  // Get the event sender
+  var page = <pages.Page>args.object;
+  page.bindingContext = new HelloWorldModel();
 }
 
 let pubnub = new PubNub(myPub, mySub);
 pubnub.setUUID("triniwiz")
 pubnub.subscribe("triniwiz_home", function (cb) {
- // console.dump(cb)
-})
-pubnub.publish("triniwiz_home", "Testing from nativescript", function (cb) {
-  //  console.dump(cb.message)
-})
-pubnub.history("triniwiz_home",true,function (cb) {
-    console.dump(cb)
+  console.dump(cb)
 })
 
+let cb = (args) => {
+  console.dump(args);
+};
+pubnub.history("triniwiz_home",10,true, cb.bind(this))
+
+/*pubnub.publish("triniwiz_home", "Testing day 2", function (cb) {
+  console.dump(cb.message)
+})
+pubnub.publish("triniwiz_home", "Everythings OK", function (cb) {
+  console.dump(cb.message)
+})
+pubnub.publish("triniwiz_home", "Hello from earth", function (cb) {
+  console.dump(cb.message)
+})*/
+/*
+pubnub.unsubscribe("triniwiz_home", function (cb) {
+  console.dump(cb)
+})*/
+/*pubnub.hereNow("triniwiz_home", false, false, function (cb) {
+  console.dump(cb.message)
+})*/
+/*pubnub.globalHereNow(function (cb) {
+  console.dump(cb)
+})*/
+/*pubnub.time(function (cb) {
+   console.log(cb.message)
+})*/
+/*pubnub.publish("triniwiz_home", "Testing from nativescript", function (cb) {
+  console.dump(cb.message)
+})*/
+/*pubnub.history("triniwiz_home", true, function (cb) {
+  console.dump(cb)
+})
+
+pubnub.hereNow("triniwiz_home", false, false, function (cb) {
+ console.dump(cb.message)
+})*/
 /*pubnub.setState('triniwiz',"triniwiz" ,{"firstName":"Osei","lastName":"Fortune"},function(cb){
     console.dump(cb)
 })*/

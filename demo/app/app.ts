@@ -1,2 +1,3 @@
 ﻿import * as application from 'application';
-application.start({ moduleName: 'main/main' });
+application.mainModule = "main-page/main-page";
+application.start();
