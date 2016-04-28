@@ -1,12 +1,11 @@
 {
   "name": "nativescript-pubnub",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A NativeScript plugin to use pubnub",
   "main": "pubnub.js",
   "nativescript": {
     "platforms": {
-      "android": "1.7.0",
-      "ios": "1.7.0"
+      "android": "1.7.0"
     }
   },
   "scripts": {

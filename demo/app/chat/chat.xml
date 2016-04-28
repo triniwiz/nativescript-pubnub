@@ -1,0 +1,22 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" loaded="pageLoaded">
+ <GridLayout rows="*,auto">
+
+ <ListView  items="{{msgList}}">
+ <ListView.itemTemplate>
+ <GridLayout rows="*,*" class="message">
+ <Label text="{{body}}" class="body" />
+ <Label text="{{from}}" class="title" row="1"/>
+ </GridLayout>
+ </ListView.itemTemplate>
+ </ListView>
+ 
+ 
+ <GridLayout verticalAlignment="bottom" columns="*,100" row="1">
+ <TextField hint="Enter your message..." text="{{message.body}}"/>
+ <Button text="Send" col="1" tap="sendMessage"/>
+ </GridLayout>
+ 
+ </GridLayout>
+
+
+</Page>

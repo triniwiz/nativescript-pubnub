@@ -1,21 +1,29 @@
 import {Observable} from 'data/observable';
 import {PubNub} from 'nativescript-pubnub';
+import settings = require("application-settings");
+import frame = require("ui/frame");
+const pubKey = "demo";
+const subKey = "demo";
+let pubnub = new PubNub(pubKey, subKey, true);
 export class LoginViewModel extends Observable {
-    pubnub: PubNub;
     user: User;
     constructor() {
         super();
-        this.user = { username: '', channel: '' }
-        this.pubnub = new PubNub("demo", "demo", true);
+        this.user = { username: 'nsChatUser', channel: 'nsChatDemo' };
     }
     login() {
-        if (this.user.username.length > 0 && this.user.channel.length > 0) {
-            this.pubnub.setUUID(this.user.username);
-            this.pubnub.subscribe(this.user.channel, function (cb) {
-                console.dump(cb)
+        if (this.user && this.user.username && this.user.channel) {
+            pubnub.setUUID(this.user.username);
+            settings.setString("uuid", this.user.username);
+            settings.setString("channel", this.user.channel);
+            pubnub.subscribe(this.user.channel, (cb) => {
+                this.goToMain();
             });
         }
 
+    }
+    goToMain() {
+        frame.topmost().navigate({ moduleName: "chat/chat", context: { instance: pubnub.instance } })
     }
 }
 
