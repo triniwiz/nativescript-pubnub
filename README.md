@@ -1,3 +1,5 @@
+﻿[![npm](https://img.shields.io/npm/v/nativescript-pubnub.svg)](https://www.npmjs.com/package/nativescript-pubnub)
+[![npm](https://img.shields.io/npm/dt/nativescript-pubnub.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pubnub)
 # nativescript-pubnub
 ##WIP
 
