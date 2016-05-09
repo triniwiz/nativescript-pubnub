@@ -3,7 +3,7 @@
 # nativescript-pubnub
 
 ##Usage
-tns plugin add https://github.com/triniwiz/nativescript-pubnub;
+tns plugin add nativescript-pubnub
 
 ##Android
 
