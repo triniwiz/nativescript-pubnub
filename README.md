@@ -130,9 +130,7 @@ Use any of the following methods to retrieve pubnub's history;
 ```
 ###Remove Channel Group
 ```js
+
 .channelGroupRemoveChannel(group, channels): Promise;
 .channelGroupRemoveChannel(group, channel: String): Promise;
-```
-.channelGroupRemoveChannel(group, channels, callback)
-.channelGroupRemoveChannel(group, channel: String, callback)
 ```
