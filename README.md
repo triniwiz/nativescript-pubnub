@@ -1,3 +1,5 @@
+﻿[![npm](https://img.shields.io/npm/v/nativescript-pubnub.svg)](https://www.npmjs.com/package/nativescript-pubnub)
+[![npm](https://img.shields.io/npm/dt/nativescript-pubnub.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-pubnub)
 # nativescript-pubnub
 
 ##Usage
@@ -128,6 +130,12 @@ Use any of the following methods to retrieve pubnub's history;
 ```
 ###Remove Channel Group
 ```js
+<<<<<<< HEAD
 .channelGroupRemoveChannel(group, channels): Promise;
 .channelGroupRemoveChannel(group, channel: String): Promise;
 ```
+=======
+.channelGroupRemoveChannel(group, channels, callback)
+.channelGroupRemoveChannel(group, channel: String, callback)
+```
+>>>>>>> 33c8e179f7584bb8c61eccb908b70b93702d05eb
