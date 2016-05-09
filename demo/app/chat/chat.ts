@@ -10,10 +10,8 @@ export function navigatingTo(args: NavigatedData) {
     chatVM.subToHome();
 }
 export function pageLoaded(args: NavigatedData) {
-    page.bindingContext = chatVM;   
+    page.bindingContext = chatVM;
 }
 export function sendMessage() {
-    if (page.bindingContext.message.body.length > 0) {
-        page.bindingContext.sendMessage();
-    }
+    chatVM.sendMessage();
 }

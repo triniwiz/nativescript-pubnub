@@ -16,9 +16,13 @@ export class LoginViewModel extends Observable {
             pubnub.setUUID(this.user.username);
             settings.setString("uuid", this.user.username);
             settings.setString("channel", this.user.channel);
-            pubnub.subscribe(this.user.channel, (cb) => {
-                this.goToMain();
-            });
+            pubnub.subscribe(this.user.channel)
+                .then((cb,item) => {
+                    this.goToMain();
+                })
+                .catch((err) => {
+                    console.log(err.message)
+                });
         }
 
     }

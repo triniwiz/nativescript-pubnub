@@ -12,7 +12,7 @@
  
  
  <GridLayout verticalAlignment="bottom" columns="*,100" row="1">
- <TextField hint="Enter your message..." text="{{message.body}}"/>
+ <TextField id="message" hint="Enter your message..." text="{{$value.message.body}}"/>
  <Button text="Send" col="1" tap="sendMessage"/>
  </GridLayout>
  

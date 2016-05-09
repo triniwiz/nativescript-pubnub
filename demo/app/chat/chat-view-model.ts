@@ -10,30 +10,39 @@ export class ChatViewModel extends Observable {
   pubnub;
   constructor() {
     super();
-    this.message = { body: '', from: '' };
+    this.set("message", { body: '', from: '' });
     this.msgList = new ObservableArray();
   }
   sendMessage() {
-    this.message.from = this.pubnub.getUUID();
-    this.pubnub.publish(channel, this.message, (cb) => {
-      this.msgList.push(this.message);
-      this.message = { body: '', from: '' };
-    })
+    if (this.get("message").body.length > 0) {
+      this.message.from = this.pubnub.getUUID();
+      this.pubnub.publish(channel, this.get("message"))
+        .then((cb) => {
+          this.msgList.push(this.message);
+      // this.set("message", { body: '', from: '' });
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }
   getMessages() {
-    this.pubnub.history(channel, 100, (cb) => {
-      cb.message[0].forEach((item) => {
-        this.msgList.push(item);
+    this.msgList.splice(0);
+    this.pubnub.history(channel, 100)
+      .then((cb) => {
+        cb.message[0].forEach((item) => {
+          this.msgList.push(item);
+        })
       })
-    })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   set instance(i) {
     this.pubnub = new PubNub(i);
   }
   subToHome() {
-    this.pubnub.subscribe(channel, (cb) => {
-      console.dump(cb)
-    });
+    this.pubnub.subscribe(channel);
   }
 }
 

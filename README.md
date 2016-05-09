@@ -1,5 +1,4 @@
 # nativescript-pubnub
-##WIP
 
 ##Usage
 tns plugin add https://github.com/triniwiz/nativescript-pubnub;
@@ -39,17 +38,17 @@ new PubNub(pubKey: String, subKey: String, secretKey: String, cipherKey: String,
 Use any of the following methods to subscribe to a channel or multiple channels;
 
 ```js
-.subscribe(channel,callback:Function);
+.subscribe(channel): Promise;
 
-.subscribe(channel:String,callback:Function, timetoken:Number)
+.subscribe(channel:String,timetoken:Number): Promise
 
-.subscribe(channel:String, callback:Function, timetoken:String)
+.subscribe(channel:String, timetoken:String): Promise
 
-.subscribe(channels:String[], callback:Function, timetoken:String)
+.subscribe(channels:String[], timetoken:String): Promise
 
-.subscribe(channels:String[], callback:Function, timetoken:Number)
+.subscribe(channels:String[], timetoken:Number): Promise
 
-.subscribe(channels:String[], callback:Function)
+.subscribe(channels:String[] ): Promise
 ```
 
 ###Publish
@@ -61,26 +60,26 @@ The message argument can contain any JSON serializable data, including: Objects,
 
 
 ```js
-.publish(channel: String, message: any, storeInHistory: Boolean, metadata:String, callback:Function);
-.publish(channel: String, message: any, storeInHistory: Boolean, callback:Function);
-.publish(channel: String, message: any, metadata, callback:Function);
-.publish(channel: String, message: any, callback:Function)
+.publish(channel: String, message: any, storeInHistory: Boolean, metadata:String): Promise;
+.publish(channel: String, message: any, storeInHistory: Boolean): Promise;
+.publish(channel: String, message: any, metadata): Promise;
+.publish(channel: String, message: any): Promise;
 ```
 
 ###History
 Use any of the following methods to retrieve pubnub's history;
 ```js
-.history(channel, count, callback);
-.history(channel, reverse, callback);
-.history(channel, start, end, callback);
-.history(channel, count, reverse, callback);
-.history(channel, start, reverse, callback);
-.history(channel, start, count, callback);
-.history(channel, includeTimetoken, count, callback);
-.history(channel, start, count, reverse, callback);
-.history(channel, start, end, count, callback);
-.history(channel, start, end, count, reverse, includeTimetoken, callback);
-.history(channel: String, start: Number, end: Number, count: Number, reverse: Boolean, includeTimetoken: Boolean, callback:Function);
+.history(channel, count): Promise;
+.history(channel, reverse): Promise;
+.history(channel, start, end): Promise;
+.history(channel, count, reverse): Promise;
+.history(channel, start, reverse): Promise;
+.history(channel, start, count): Promise;
+.history(channel, includeTimetoken, count): Promise;
+.history(channel, start, count, reverse): Promise;
+.history(channel, start, end, count): Promise;
+.history(channel, start, end, count, reverse, includeTimetoken): Promise;
+.history(channel: String, start: Number, end: Number, count: Number, reverse: Boolean, includeTimetoken: Boolean): Promise;
  ```
 ###Unsubscribe
 ```js
@@ -90,45 +89,45 @@ Use any of the following methods to retrieve pubnub's history;
 
 ###Here Now
 ```js
-.hereNow(channel: String, state, disable_uuids, callback);
-.hereNow(state: String, disable_uuids: Boolean, callback);
-.hereNow(channel: String, callback)
+.hereNow(channel: String, state, disable_uuids): Promise;
+.hereNow(state: String, disable_uuids: Boolean): Promise;
+.hereNow(channel: String): Promise;
     
 ```
 ###Grant
 ```js
-.pamGrant(channel: String, auth_key: String, read: Boolean, write: Boolean, int: number, callback)
-.pamGrant(channel: String, auth_key: String, read: Boolean, write: Boolean, callback)
-.pamGrant(channel: String, read: Boolean, write: Boolean, int: number, callback)
-.pamGrant(channel: String, read: Boolean, write: Boolean, callback)
-.pamGrant(channel, auth_key, read, write, int, callback)
+.pamGrant(channel: String, auth_key: String, read: Boolean, write: Boolean, int: number): Promise;
+.pamGrant(channel: String, auth_key: String, read: Boolean, write: Boolean): Promise;
+.pamGrant(channel: String, read: Boolean, write: Boolean, int: number): Promise;
+.pamGrant(channel: String, read: Boolean, write: Boolean): Promise;
+.pamGrant(channel, auth_key, read, write, int): Promise;
 ```
 ###Add Channels to Channel Group   
 ```js
-.channelGroupAddChannel(group: String, channels, callback)
-.channelGroupAddChannel(group: String, channels, callback)
+.channelGroupAddChannel(group: String, channels): Promise;
+.channelGroupAddChannel(group: String, channels): Promise;
 ```
 
 ###Where Now
 ```js
-.whereNow(uuid: String, callback: () => void)
-.whereNow(callback: () => void)
+.whereNow(uuid: String): Promise;
+.whereNow(): Promise;
 ```
 
 ###Audit Channel Group
 ```js
-.pamAuditChannelGroup(group, callback);
-.pamAuditChannelGroup(group, auth_key, callback);   
+.pamAuditChannelGroup(group): Promise;
+.pamAuditChannelGroup(group, auth_key): Promise;   
 ```
 ###Channel Group Grant
 ```js
-.pamGrantChannelGroup(group, auth_key, read, management, ttl, callback);
-.pamGrantChannelGroup(group, auth_key, read, management, callback);
-.pamGrantChannelGroup(group, read, management, ttl, callback);
-.pamGrantChannelGroup(group, read, management, callback)
+.pamGrantChannelGroup(group, auth_key, read, management, ttl): Promise;
+.pamGrantChannelGroup(group, auth_key, read, management): Promise;
+.pamGrantChannelGroup(group, read, management, ttl): Promise;
+.pamGrantChannelGroup(group, read, management): Promise;
 ```
 ###Remove Channel Group
 ```js
-.channelGroupRemoveChannel(group, channels, callback)
-.channelGroupRemoveChannel(group, channel: String, callback)
+.channelGroupRemoveChannel(group, channels): Promise;
+.channelGroupRemoveChannel(group, channel: String): Promise;
 ```
