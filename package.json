@@ -1,6 +1,6 @@
 {
   "name": "nativescript-pubnub",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A NativeScript plugin to use pubnub",
   "main": "pubnub.js",
   "nativescript": {
@@ -23,7 +23,13 @@
     "NativeScript",
     "JavaScript",
     "Android",
-    "PubNub"
+    "PubNub",
+    "realtime",
+    "messaging",
+    "websockets",
+     "subscribe",
+     "publish",
+     "cloud"
   ],
   "author": {
     "name": "Osei Fortune",
@@ -36,6 +42,7 @@
   "homepage": "https://github.com/triniwiz/nativescript-pubnub",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "tns-platform-declarations": "^2.0.0",
     "typescript": "^1.8.10"
   }
 }

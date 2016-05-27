@@ -4,13 +4,16 @@
         "module": "commonjs",
         "removeComments": true,
         "experimentalDecorators": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "declaration": true
     },
     "files": [
-      "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
-      "pubnub.common.ts",
-      "pubnub.android.ts", 
-      "pubnub.ios.ts"
+        "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
+        "./node_modules/tns-platform-declarations/android17.d.ts",
+        "./node_modules/tns-platform-declarations/ios.d.ts",
+        "pubnub.common.ts",
+        "pubnub.android.ts",
+        "pubnub.ios.ts"
     ],
     "compileOnSave": false
 }

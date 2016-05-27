@@ -1,9 +1,9 @@
 import common = require('./pubnub.common');
 import helper = require('./helpers/jsonHelper');
 export class PubNub extends common.PubNub {
-    pubKey: string;
-    subKey: string;
-    pubnub;
+    private pubKey: string;
+    private subKey: string;
+    private pubnub;
 
     constructor(...args: any[]) {
         super();
@@ -300,11 +300,11 @@ export class PubNub extends common.PubNub {
         });
     };
 
-    uuid() {
+    uuid():string {
         return this.pubnub.uuid();
     };
 
-    getUUID() {
+    getUUID():string {
         return this.pubnub.getUUID();
     };
 
@@ -316,7 +316,7 @@ export class PubNub extends common.PubNub {
         this.pubnub.setAuthKey(key);
     };
 
-    getAuthKey() {
+    getAuthKey():string {
         return this.pubnub.getAuthKey();
     };
 
