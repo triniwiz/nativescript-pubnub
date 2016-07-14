@@ -1,8 +1,5 @@
 import common = require('./pubnub.common');
 export declare class PubNub extends common.PubNub {
-    private pubKey;
-    private subKey;
-    private pubnub;
     constructor(...args: any[]);
     subscribe(...args: any[]): Promise<any>;
     publish(...args: any[]): Promise<any>;

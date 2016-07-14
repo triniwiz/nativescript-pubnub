@@ -17,7 +17,7 @@ export class LoginViewModel extends Observable {
             settings.setString("uuid", this.user.username);
             settings.setString("channel", this.user.channel);
             pubnub.subscribe(this.user.channel)
-                .then((cb,item) => {
+                .then((cb) => {
                     this.goToMain();
                 })
                 .catch((err) => {

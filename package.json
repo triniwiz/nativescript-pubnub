@@ -1,11 +1,11 @@
 {
   "name": "nativescript-pubnub",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A NativeScript plugin to use pubnub",
   "main": "pubnub.js",
   "nativescript": {
     "platforms": {
-      "android": "1.6.0"
+      "android": "1.5.0"
     }
   },
   "scripts": {
@@ -42,7 +42,6 @@
   "homepage": "https://github.com/triniwiz/nativescript-pubnub",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "tns-platform-declarations": "^2.0.0",
     "typescript": "^1.8.10"
   }
 }
