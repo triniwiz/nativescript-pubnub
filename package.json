@@ -5,7 +5,8 @@
   "main": "pubnub.js",
   "nativescript": {
     "platforms": {
-      "android": "1.5.0"
+      "android": "1.5.0",
+      "ios": "1.5.0"
     }
   },
   "scripts": {
@@ -27,9 +28,9 @@
     "realtime",
     "messaging",
     "websockets",
-     "subscribe",
-     "publish",
-     "cloud"
+    "subscribe",
+    "publish",
+    "cloud"
   ],
   "author": {
     "name": "Osei Fortune",
@@ -43,5 +44,8 @@
   "readmeFilename": "README.md",
   "devDependencies": {
     "typescript": "^1.8.10"
+  },
+  "dependencies": {
+    "tns-platform-declarations": "^2.0.0"
   }
 }

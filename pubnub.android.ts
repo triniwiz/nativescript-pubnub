@@ -1,60 +1,86 @@
 import common = require('./pubnub.common');
 import helper = require('./helpers/jsonHelper');
-export class PubNub extends common.PubNub {
-    private pubKey: string;
-    private subKey: string;
+
+export class TNSPubNub extends common.TNSPubNub {
+    private _pubKey: string;
+    private _subKey: string;
     private pubnub;
 
-    constructor(...args: any[]) {
+    constructor(config: common.TNSPubNubConfiguration) {
         super();
-        if (args.length > 1) {
-            this.pubKey = args[0];
-            this.subKey = args[1];
+        const _config = new com.pubnub.api.PNConfiguration();
+
+        if (config.secretKey) {
+            _config.setSubscribeKey(config.secretKey);
         }
 
-        let enableSSL;
-        let secretKey;
-        let cipherKey;
-        let iv;
-        switch (arguments.length) {
-            case 1:
-                this.pubnub = args[0];
-                break;
-            case 2:
-                if (typeof this.pubKey === 'string' && typeof this.subKey === 'string') {
-                    this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey);
-                }
-                break;
-            case 3:
-                if (typeof arguments[2] === 'boolean') {
-                    enableSSL = args[2];
-                    this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey, enableSSL);
-                } else if (typeof arguments[2] === 'string') {
-                    secretKey = args[2];
-                    this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey, secretKey);
-                }
-                break;
-            case 4:
-                secretKey = args[2];
-                enableSSL = args[3];
-                this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey, secretKey, enableSSL);
-                break;
-            case 5:
-                secretKey = args[2];
-                cipherKey = args[3];
-                enableSSL = args[4];
-                this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey, secretKey, cipherKey, enableSSL);
-                break;
-            case 6:
-                secretKey = args[2];
-                cipherKey = args[3];
-                enableSSL = args[4];
-                iv = args[5];
-                this.pubnub = new com.pubnub.api.Pubnub(this.pubKey, this.subKey, secretKey, cipherKey, enableSSL, iv);
-                break;
+        if (config.publishKey) {
+            _config.setPublishKey(config.publishKey);
+        }
+        if (config.secretKey) {
+            _config.setSecretKey(config.secretKey);
+        }
+        if (config.cipherKey) {
+            _config.setCipherKey(config.cipherKey);
+        }
+        if (config.uuid) {
+            _config.setUuid(config.uuid);
         }
 
+        if (config.logVerbosity === 'body') {
+            const _logVerbosity = com.pubnub.api.enums.PNLogVerbosity.BODY;
+            _config.setLogVerbosity(_logVerbosity);
+        } else {
+            const _logVerbosity = com.pubnub.api.enums.PNLogVerbosity.NONE;
+            _config.setLogVerbosity(_logVerbosity);
+        }
 
+        if (config.authKey) {
+            _config.setAuthKey(config.authKey);
+        }
+        if (config.cacheBusting) {
+            _config.setCacheBusting(config.cacheBusting);
+        }
+        if (config.secure) {
+            _config.setSecure(config.secure);
+        }
+        if (config.connectTimeout) {
+            _config.setConnectTimeout(config.connectTimeout);
+        }
+        if (config.subscribeTimeout) {
+            _config.setSubscribeTimeout(config.subscribeTimeout);
+        }
+        if (config.nonSubscribeRequestTimeout) {
+            _config.setNonSubscribeRequestTimeout(config.nonSubscribeRequestTimeout);
+        }
+        if (config.filterExpression) {
+            _config.setFilterExpression(config.filterExpression);
+        }
+        if (config.heartbeatNotificationOptions) {
+            let _heartbeatNotificationOptions;
+
+            if (config.heartbeatNotificationOptions === 'all') {
+                _heartbeatNotificationOptions = com.pubnub.api.enums.PNHeartbeatNotificationOptions.ALL;
+            } else if (config.heartbeatNotificationOptions === 'none') {
+                _heartbeatNotificationOptions = com.pubnub.api.enums.PNHeartbeatNotificationOptions.NONE;
+            } else {
+                _heartbeatNotificationOptions = com.pubnub.api.enums.PNHeartbeatNotificationOptions.FAILURES;
+            }
+            _config.setHeartbeatNotificationOptions(_heartbeatNotificationOptions);
+        }
+        if (config.origin) {
+            _config.setOrigin(config.origin);
+        }
+        if (config.reconnectionPolicy) {
+            let _reconnectionPolicy;
+
+            if (config.reconnectionPolicy === 'linear') {
+                _reconnectionPolicy = com.pubnub.api.enums.PNReconnectionPolicy.LINEAR;
+            } else {
+                _reconnectionPolicy = com.pubnub.api.enums.PNReconnectionPolicy.NONE;
+            }
+            _config.setReconnectionPolicy(_reconnectionPolicy)
+        }
 
     };
 
@@ -300,11 +326,11 @@ export class PubNub extends common.PubNub {
         });
     };
 
-    uuid():string {
+    uuid(): string {
         return this.pubnub.uuid();
     };
 
-    getUUID():string {
+    getUUID(): string {
         return this.pubnub.getUUID();
     };
 
@@ -316,7 +342,7 @@ export class PubNub extends common.PubNub {
         this.pubnub.setAuthKey(key);
     };
 
-    getAuthKey():string {
+    getAuthKey(): string {
         return this.pubnub.getAuthKey();
     };
 
