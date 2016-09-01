@@ -6,6 +6,5 @@ android {
     }
 }
 dependencies {
-    compile 'com.pubnub:pubnub-android:3.7.10'
-    //'com.pubnub:pubnub-android-debug:3.7.+' For the debug version
+compile group: 'com.pubnub', name: 'pubnub', version: '4.0.9'
 }

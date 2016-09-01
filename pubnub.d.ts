@@ -1,4 +1,4 @@
-import common = require('./pubnub.common');
+import common = require('./src/pubnub.common');
 export declare class PubNub extends common.PubNub {
     constructor(...args: any[]);
     subscribe(...args: any[]): Promise<any>;
